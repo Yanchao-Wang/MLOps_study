@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Train MNIST",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "main.py",
+            "cwd": "${workspaceFolder}/final_exercise",
+            "args": [
+                "train",
+                "--epochs", "1",
+                "--lr",
+                "1e-3"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Evaluate MNIST",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "main.py",
+            "cwd": "${workspaceFolder}/final_exercise",
+            "args": [
+                "evaluate",
+                "model.pt"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Train and Evaluate MNIST",
+            "configurations": ["Train MNIST", "Evaluate MNIST"]
+        }
+    ]
+}
