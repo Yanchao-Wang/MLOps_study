@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Train",
+            "type": "python",
+            "request": "launch",
+            "pythonPath": "/home/yanchao/MLOps/exercises/.venv/bin/python",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${fileDirname}",
+            "args": ["train", "--lr", "1e-4"],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Evaluate",
+            "type": "python",
+            "request": "launch",
+            "pythonPath": "/home/yanchao/MLOps/exercises/.venv/bin/python",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${fileDirname}",
+            "args": ["evaluate", "model.pt"],
+            "justMyCode": true
+        }
+    ]
+}
