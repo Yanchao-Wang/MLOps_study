@@ -1,0 +1,86 @@
+[project]
+name = "exercises"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11.0"
+dependencies = [
+    "cookiecutter>=2.6.0",
+    "ipykernel>=7.1.0",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.8.0",
+    "nbconvert>=7.16.6",
+    "numpy>=2.4.1",
+    "pillow>=10.0.0",
+    "torch==2.3.1",
+    "torchvision==0.18.1",
+]
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cpu" },
+]
+torchvision = [
+    { index = "pytorch-cpu" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[dependency-groups]
+dev = [
+    "dvc>=3.66.1",
+    "mypy>=1.19.1",
+    "pre-commit>=4.5.1",
+    "ruff>=0.15.0",
+]
+
+[tool.ruff]
+line-length = 99 # 允许每行最长 99 个字符
+
+[tool.ruff.lint]
+select = ["I", "E", "W", "F", "N", "D"] 
+# I: Isort (导入排序)
+# E/W: Pycodestyle (基本规范)
+# F: Pyflakes (错误检查)
+# N: Naming (命名规范，比如函数名用小写+下划线)
+# D: Pydocstyle (文档字符串规范)
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+mypy_path = "$MYPY_CONFIG_FILE_DIR"
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
+# 忽略缺少类型存根的第三方库和自定义模块
+[[tool.mypy.overrides]]
+module = [
+    "torch.*",
+    "torchvision.*",
+    "sklearn.*",
+    "matplotlib.*",
+    "data",
+    "model",
+    "my_project_name.*",
+]
+ignore_missing_imports = true
+ignore_errors = true
+[[tool.mypy.overrides]]
+module = [
+    "torch.*",
+    "torchvision.*",
+    "sklearn.*",
+    "matplotlib.*",
+]
+ignore_missing_imports = true
+
+# 忽略自定义模块的导入错误
+[[tool.mypy.overrides]]
+module = ["data", "model", "my_project_name.*"]
+ignore_errors = true
