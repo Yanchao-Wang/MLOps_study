@@ -51,6 +51,10 @@ name = "pytorch-cpu"
 url = "https://download.pytorch.org/whl/cpu"
 explicit = true
 
+[project.scripts]
+train = "my_mnist_project.train:main"
+evaluate = "my_mnist_project.evaluate:main"
+
 [tool.ruff]
 line-length = 120
 

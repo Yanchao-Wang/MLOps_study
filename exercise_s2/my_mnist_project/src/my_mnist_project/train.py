@@ -1,4 +1,4 @@
-def train() -> None:
+def main() -> None:
     """Train the model on the dataset."""
     # dataset = MyDataset("data/raw")
     # model = Model()
@@ -7,4 +7,4 @@ def train() -> None:
 
 
 if __name__ == "__main__":
-    train()
+    main()
